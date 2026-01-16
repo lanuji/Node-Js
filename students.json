@@ -1,0 +1,37 @@
+[
+  {
+    "studentId": 1,
+    "name": "Lanuji",
+    "address": "Modera",
+    "grade": "A",
+    "subjects": "Tamil"
+  },
+  {
+    "studentId": 2,
+    "name": "Anuji",
+    "address": "Wellawatta",
+    "grade": "B",
+    "subjects": "Saivaneri"
+  },
+  {
+    "studentId": 3,
+    "name": "Saravana",
+    "address": "Dehiwala",
+    "grade": "A",
+    "subjects": "English"
+  },
+  {
+    "name": "Sanujan",
+    "address": "Germany",
+    "grade": "A",
+    "subject": "Maths",
+    "studentId": 4
+  },
+  {
+    "name": "Kanistra",
+    "address": "Jaffna",
+    "grade": "B",
+    "subject": "Tamil",
+    "studentId": 5
+  }
+]
