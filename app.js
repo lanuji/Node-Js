@@ -5,29 +5,27 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Root route
+
 app.get("/", (req, res) => {
   res.send("Welcome to Student API! ");
 });
 
-// Function to read students from JSON file
 function readStudents() {
   const data = fs.readFileSync("students.json");
   return JSON.parse(data);
 }
 
-// Function to write students to JSON file
 function writeStudents(data) {
   fs.writeFileSync("students.json", JSON.stringify(data, null, 2));
 }
 
-// GET all students
+
 app.get("/students", (req, res) => {
   const students = readStudents();
   res.json(students);
 });
 
-// GET student by id
+
 app.get("/student/:id", (req, res) => {
   const students = readStudents();
   const id = parseInt(req.params.id);
@@ -41,20 +39,30 @@ app.get("/student/:id", (req, res) => {
   res.json(student);
 });
 
-// POST new student
+
 app.post("/student", (req, res) => {
   const students = readStudents();
-  const newStudent = req.body;
+  const {name , address,grade,subject} = req.body;
 
-  newStudent.studentId = students.length ? students[students.length - 1].studentId + 1 : 1;
+  if (!name){
+      return res.status(400).json({
+        status:400,
+        message:"Bad Request:'name' field is required."
+      });
+  }
+
+ const  newStudent ={studentId : students.length ? students[students.length - 1].studentId + 1 : 1 , name, address, grade, subject};
 
   students.push(newStudent);
   writeStudents(students);
 
-  res.status(201).json(newStudent);
+
+  res.status(201).json({
+    message: 'Student record created Successfully',
+    data: newStudent
+  });
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
