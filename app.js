@@ -33,7 +33,9 @@ app.get("/student/:id", (req, res) => {
   const student = students.find(s => s.studentId === id);
 
   if (!student) {
-    return res.status(404).json({ message: "Student not found" });
+    return res.status(404).json({ 
+      status:404,
+      message: "Student not found" });
   }
 
   res.json(student);
@@ -58,6 +60,7 @@ app.post("/student", (req, res) => {
 
 
   res.status(201).json({
+    status:201,
     message: 'Student record created Successfully',
     data: newStudent
   });
