@@ -6,8 +6,9 @@ const PORT = 3000;
 app.use(express.json());
 
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Student API! ");
+app.get("/health", (req, res) => {
+  return res.json({
+    message:"Student API is Working! "});
 });
 
 function readStudents() {
